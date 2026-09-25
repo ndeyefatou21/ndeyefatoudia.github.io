@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ndeye Fatou Dia — Systèmes, Réseaux & Télécommunications</title>
+<meta name="description" content="Portfolio de Ndeye Fatou Dia, technicienne supérieure en Systèmes, Réseaux et Télécommunications (ESP Dakar).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   1. TOKENS — couleurs, typo, espacements
+   ========================================================= */
+:root {
+  --navy: #0E1C30;
+  --navy-2: #16294A;
+  --navy-line: #27406A;
+  --signal: #2EC4B6;         /* couleur d'accent : "signal" */
+  --signal-ink: #0B7C73;     /* accent lisible sur fond clair */
+
+  --bg: #F6F8FB;
+  --surface: #FFFFFF;
+  --surface-2: #EEF2F7;
+  --ink: #0E1C30;
+  --ink-2: #4A5668;
+  --line: #D9E0EA;
+  --accent: var(--signal-ink);
+  --accent-soft: rgba(46,196,182,.12);
+  --shadow: 0 1px 2px rgba(14,28,48,.06), 0 8px 24px -12px rgba(14,28,48,.18);
+
+  --f-body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-display: "IBM Plex Sans Condensed", "Arial Narrow", "IBM Plex Sans", sans-serif;
+
+  --wrap: 1160px;
+  --radius-lg: 18px;
+  --radius: 10px;
+  --header-h: 68px;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1526; --surface: #10203A; --surface-2: #15284A; --ink: #E8EEF6;
+    --ink-2: #A3B0C2; --line: #223A60; --accent: var(--signal);
+    --accent-soft: rgba(46,196,182,.14); --shadow: 0 10px 30px -14px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1526; --surface: #10203A; --surface-2: #15284A; --ink: #E8EEF6;
+  --ink-2: #A3B0C2; --line: #223A60; --accent: var(--signal);
+  --accent-soft: rgba(46,196,182,.14); --shadow: 0 10px 30px -14px rgba(0,0,0,.6);
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px)); }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.12; margin: 0; letter-spacing: -.01em; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 4px; }
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Boutons */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; font: 600 15px/1 var(--f-body);
+  padding: 14px 22px; border-radius: 999px; border: 1px solid transparent; cursor: pointer;
+  text-decoration: none; transition: background .2s, border-color .2s, color .2s, transform .2s;
+}
+.btn svg { width: 17px; height: 17px; flex: none; }
+.btn-primary { background: var(--signal); color: var(--navy); }
+.btn-primary:hover { background: #5AD6CB; transform: translateY(-1px); }
+.btn-ghost { border-color: rgba(255,255,255,.28); color: #fff; background: transparent; }
+.btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
+.btn-line { border-color: var(--line); color: var(--ink); background: var(--surface); }
+.btn-line:hover { border-color: var(--accent); color: var(--accent); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+
+/* =========================================================
+   3. EN-TÊTE / NAVIGATION
+   ========================================================= */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  transition: background .25s, box-shadow .25s;
+}
+.site-header.is-solid { background: rgba(14,28,48,.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(255,255,255,.06); }
+.nav { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #fff; }
+.brand { white-space: nowrap; display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 16px/1 var(--f-display); letter-spacing: .02em; }
+.brand-mark { width: 34px; height: 34px; border-radius: 9px; border: 1px solid var(--signal); display: grid; place-items: center; font-size: 13px; color: var(--signal); }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-links a { white-space: nowrap; text-decoration: none; font-size: 14.5px; padding: 8px 11px; border-radius: 8px; color: rgba(255,255,255,.78); transition: color .2s, background .2s; }
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,.06); }
+.nav-links a.is-active { color: var(--signal); }
+.nav-cta { margin-left: 10px; }
+.nav-toggle { display: none; background: none; border: 1px solid rgba(255,255,255,.25); color: #fff; border-radius: 10px; width: 44px; height: 44px; cursor: pointer; }
+.nav-toggle svg { width: 20px; height: 20px; }
+
+@media (max-width: 1060px) {
+  .nav-toggle { display: grid; place-items: center; }
+  .nav-links {
+    position: fixed; left: 0; right: 0; top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+    flex-direction: column; align-items: stretch; gap: 2px; padding: 12px 20px 24px;
+    background: var(--navy); border-top: 1px solid var(--navy-line);
+    transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s;
+    max-height: calc(100vh - var(--header-h)); overflow-y: auto;
+  }
+  .nav-links.is-open { opacity: 1; transform: none; pointer-events: auto; }
+  .nav-links a { padding: 13px 12px; font-size: 16px; }
+  .nav-cta { margin: 10px 0 0; justify-content: center; }
+}
+
+/* =========================================================
+   4. HERO
+   ========================================================= */
+.hero {
+  background: var(--navy); color: #fff; position: relative; overflow: hidden;
+  padding: calc(var(--header-h) + 40px) 0 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.hero-text { padding: 24px 0 96px; }
+.hero-status { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,.75); margin-bottom: 26px; }
+.hero-status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px rgba(46,196,182,.2); }
+.hero h1 { font-size: clamp(44px, 7.4vw, 92px); font-weight: 700; letter-spacing: -.015em; line-height: .96; text-transform: uppercase; }
+.hero h1 span { display: block; }
+.hero-role { margin-top: 22px; font: 500 clamp(18px, 2.1vw, 23px)/1.35 var(--f-display); color: var(--signal); max-width: 32ch; }
+.hero-intro { margin-top: 20px; max-width: 56ch; color: rgba(255,255,255,.78); font-size: 17.5px; }
+.hero-actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-social { margin-top: 30px; display: flex; gap: 10px; }
+.icon-link {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.85); text-decoration: none; transition: border-color .2s, color .2s;
+}
+.icon-link:hover { border-color: var(--signal); color: var(--signal); }
+.icon-link svg { width: 19px; height: 19px; }
+
+/* Photo du hero */
+.hero-visual { position: relative; align-self: end; justify-self: end; width: 100%; max-width: 470px; aspect-ratio: 4 / 5; }
+.hero-lines {
+  position: absolute; inset: 0 -6% 12%; opacity: .5;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,.35) 0 2px, transparent 2px 15px);
+  -webkit-mask: radial-gradient(circle closest-side, #000 97%, transparent 100%);
+          mask: radial-gradient(circle closest-side, #000 97%, transparent 100%);
+}
+.hero-photo {
+  position: absolute; left: 11%; right: 11%; top: 7%; bottom: 0; overflow: hidden;
+  border-radius: 999px 999px 0 0; background: var(--navy-2);
+  border: 1px solid var(--navy-line); border-bottom: 0;
+  animation: rise .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-photo::after { content: ""; position: absolute; inset: auto 0 0; height: 22%; background: linear-gradient(transparent, var(--navy)); }
+.hero-monogram { position: absolute; inset: 0; display: grid; place-items: center; font: 700 96px var(--f-display); color: var(--signal); letter-spacing: .04em; }
+.orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #3fe0d2 0%, #127a74 35%, #06302f 75%); box-shadow: 0 18px 40px -12px rgba(0,0,0,.7); }
+.orb-1 { width: 46px; height: 46px; top: 12%; left: 4%; opacity: .9; }
+.orb-2 { width: 64px; height: 64px; top: 46%; right: 0; opacity: .85; }
+.hero-chip {
+  position: absolute; display: flex; align-items: center; gap: 10px; padding: 10px 14px 10px 10px;
+  background: rgba(22,41,74,.82); backdrop-filter: blur(8px); border: 1px solid var(--navy-line);
+  border-radius: 14px; color: #fff; box-shadow: 0 16px 34px -18px rgba(0,0,0,.8);
+  animation: rise .7s ease both, float 6s ease-in-out infinite;
+}
+.hero-chip i { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: rgba(46,196,182,.15); color: var(--signal); flex: none; }
+.hero-chip i svg { width: 18px; height: 18px; }
+.hero-chip b { display: block; font: 600 14px/1.2 var(--f-body); }
+.hero-chip small { display: block; font-size: 12px; color: rgba(255,255,255,.6); }
+.chip-a { top: 26%; left: -4%; animation-delay: .5s, .5s; }
+.chip-b { top: 60%; right: -6%; animation-delay: .7s, 1.5s; }
+.chip-c { bottom: 9%; left: 0; animation-delay: .9s, 2.5s; }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+@keyframes pop { to { opacity: 1; } }
+
+/* Bandeau d'outils */
+.tool-band { background: var(--navy-2); border-top: 1px solid var(--navy-line); border-bottom: 1px solid var(--navy-line); }
+.tool-band .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 28px; padding-top: 26px; padding-bottom: 26px; }
+.tool-band span { font: 600 19px var(--f-display); letter-spacing: .06em; color: rgba(255,255,255,.62); transition: color .2s; }
+.tool-band span:hover { color: var(--signal); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .hero-text { padding-bottom: 40px; }
+  .hero-visual { justify-self: center; max-width: 380px; }
+  .tool-band .wrap { justify-content: center; }
+  .tool-band span { font-size: 16px; }
+}
+@media (max-width: 520px) {
+  .hero-chip { padding: 7px 10px 7px 7px; gap: 8px; }
+  .hero-chip i { width: 28px; height: 28px; }
+  .hero-chip b { font-size: 12.5px; } .hero-chip small { font-size: 11px; }
+  .chip-a { left: -2%; } .chip-b { right: -2%; }
+}
+
+/* =========================================================
+   5. SECTIONS
+   ========================================================= */
+.section { padding: 96px 0; }
+.section + .section { border-top: 1px solid var(--line); }
+.section-head { display: grid; grid-template-columns: 260px 1fr; gap: 40px; margin-bottom: 44px; align-items: end; }
+.section-head h2 { font-size: clamp(32px, 4vw, 46px); font-weight: 700; }
+.section-head p { color: var(--ink-2); max-width: 62ch; }
+.step { display: block; font: 500 14px var(--f-body); color: var(--accent); margin-bottom: 10px; }
+@media (max-width: 820px) {
+  .section { padding: 72px 0; }
+  .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 32px; }
+}
+
+/* À propos */
+.about { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: center; }
+.about.no-photo { grid-template-columns: 1fr; }
+.about-media { position: relative; padding: 0 0 28px 28px; }
+.about-ring {
+  position: absolute; left: 0; bottom: 0; width: 58%; aspect-ratio: 1; border-radius: 50%;
+  background: repeating-conic-gradient(var(--signal) 0 1.2deg, transparent 1.2deg 6deg);
+  -webkit-mask: radial-gradient(circle, transparent 58%, #000 59%, #000 70%, transparent 71%);
+          mask: radial-gradient(circle, transparent 58%, #000 59%, #000 70%, transparent 71%);
+  opacity: .8;
+}
+.about-photo {
+  position: relative; aspect-ratio: 4 / 5; border-radius: 26px; overflow: hidden;
+  background: var(--navy-2); border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-text h2 { font-size: clamp(32px, 4vw, 46px); font-weight: 700; margin-bottom: 22px; }
+.about-body { display: grid; gap: 16px; max-width: 64ch; color: var(--ink-2); }
+.about-body p:first-child { font-size: 20px; line-height: 1.5; color: var(--ink); }
+.about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+.about-stats div { border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 16px 14px; transition: border-color .2s; }
+.about-stats div:hover { border-color: var(--accent); }
+.about-stats strong { display: block; white-space: nowrap; font: 700 24px/1.1 var(--f-display); color: var(--ink); }
+.about-stats span { display: block; font-size: 13px; color: var(--ink-2); margin-top: 4px; line-height: 1.35; }
+.about-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.about-actions .btn-line { padding: 14px 22px; }
+@media (max-width: 960px) { .about-stats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 820px) {
+  .about { grid-template-columns: 1fr; gap: 40px; }
+  .about-media { max-width: 400px; }
+}
+
+/* Timelines (formation + expériences) */
+.timeline { position: relative; display: grid; gap: 22px; margin-left: 260px; padding-left: 36px; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.t-item { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px 26px; transition: border-color .2s; }
+.t-item:hover { border-color: var(--accent); }
+.t-item::before { content: ""; position: absolute; left: -36px; top: 28px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.t-item.is-current::before { background: var(--accent); }
+.t-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; }
+.t-item h3 { font-size: 22px; font-weight: 600; }
+.t-date { font-size: 14.5px; color: var(--ink-2); white-space: nowrap; }
+.t-org { color: var(--accent); font-weight: 500; margin-top: 4px; }
+.t-list { margin-top: 14px; display: grid; gap: 7px; }
+.t-list li { position: relative; padding-left: 20px; color: var(--ink-2); }
+.t-list li::before { content: ""; position: absolute; left: 2px; top: .68em; width: 8px; height: 2px; background: var(--accent); }
+.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-top: 12px; }
+.badge-muted { background: var(--surface-2); color: var(--ink-2); }
+.t-note { margin-top: 12px; color: var(--ink-2); font-size: 15.5px; }
+@media (max-width: 820px) { .timeline { margin-left: 0; padding-left: 30px; } .t-item::before { left: -30px; } .t-item { padding: 20px; } }
+
+/* Compétences */
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skill {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 24px; transition: border-color .2s, transform .2s;
+}
+.skill:hover { border-color: var(--accent); transform: translateY(-2px); }
+.skill-icon { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 16px; }
+.skill-icon svg { width: 24px; height: 24px; }
+.skill h3 { font-size: 21px; font-weight: 600; }
+.skill p { color: var(--ink-2); font-size: 15px; margin-top: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.chip { font-size: 13.5px; padding: 5px 11px; border-radius: 7px; background: var(--surface-2); color: var(--ink); border: 1px solid transparent; transition: border-color .2s, color .2s; }
+.skill:hover .chip:hover { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 960px) { .skills { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .skills { grid-template-columns: 1fr; } }
+
+/* Projets */
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.project {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  display: flex; flex-direction: column; overflow: hidden; transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.project:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-3px); }
+.project-visual { background: var(--navy); color: var(--signal); height: 150px; display: grid; place-items: center; position: relative;
+  background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 22px 22px; }
+.project-visual svg { width: 120px; height: 90px; }
+.project-body { padding: 24px 26px 26px; display: flex; flex-direction: column; flex: 1; gap: 14px; }
+.project-tag { font-size: 13.5px; color: var(--ink-2); }
+.project h3 { font-size: 24px; font-weight: 600; }
+.project-desc { color: var(--ink-2); }
+.project h4 { font: 600 14.5px var(--f-body); color: var(--ink); }
+.project .t-list { margin-top: 6px; }
+.project-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 6px; }
+
+.project.is-featured { grid-column: 1 / -1; display: grid; grid-template-columns: .9fr 1.1fr; }
+.project.is-featured .project-visual { height: auto; min-height: 340px; }
+.project.is-featured .project-visual svg { width: 78%; height: auto; max-width: 340px; }
+.project.is-featured h3 { font-size: 30px; }
+.featured-flag { position: absolute; top: 18px; left: 18px; font-size: 13px; font-weight: 600; color: var(--navy); background: var(--signal); padding: 6px 12px; border-radius: 999px; }
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 22px; }
+@media (max-width: 900px) {
+  .projects { grid-template-columns: 1fr; }
+  .project.is-featured { grid-template-columns: 1fr; }
+  .project.is-featured .project-visual { min-height: 230px; }
+}
+@media (max-width: 520px) { .feature-grid { grid-template-columns: 1fr; } .project-body { padding: 20px; } }
+
+/* Captures d'écran de projet */
+.project-visual.has-shot { height: 200px; padding: 20px 22px 0; place-items: start center; overflow: hidden; }
+.project-visual.has-shot img { width: 100%; border-radius: 10px 10px 0 0; box-shadow: 0 -10px 40px -10px rgba(0,0,0,.6); transition: transform .4s ease; }
+.project:hover .project-visual.has-shot img { transform: translateY(-6px); }
+.project.is-featured .project-visual.has-shot { padding: 64px 26px 26px; place-items: center; }
+.project.is-featured .project-visual.has-shot img { border-radius: 10px; box-shadow: 0 20px 50px -18px rgba(0,0,0,.8); }
+.shots { display: grid; gap: 12px; margin-top: 22px; }
+.shot { padding: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface-2); cursor: zoom-in; text-align: left; color: var(--ink-2); font: 13.5px var(--f-body); transition: border-color .2s; }
+.shot:hover { border-color: var(--accent); }
+.shot img { width: 100%; }
+.shot span { display: block; padding: 9px 12px; }
+
+/* Modale projet */
+.modal { position: fixed; inset: 0; z-index: 80; display: none; }
+.modal.is-open { display: block; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(8,16,30,.66); animation: pop .2s ease forwards; opacity: 0; }
+.modal-panel {
+  position: absolute; right: 0; top: 0; bottom: 0; width: min(640px, 100%); background: var(--surface); color: var(--ink);
+  overflow-y: auto; padding: calc(28px + env(safe-area-inset-top, 0px)) 32px calc(40px + env(safe-area-inset-bottom, 0px));
+  animation: slideIn .28s ease;
+}
+@keyframes slideIn { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+.modal-close { position: sticky; top: 0; float: right; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; display: grid; place-items: center; }
+.modal-close svg { width: 18px; height: 18px; }
+.modal-panel h3 { font-size: 30px; margin: 10px 0 12px; padding-right: 50px; }
+.modal-panel h4 { font: 600 16px var(--f-body); margin: 26px 0 10px; }
+.modal-panel .lead { color: var(--ink-2); font-size: 17.5px; }
+.story { display: grid; gap: 14px; margin-top: 8px; }
+.story div { border-left: 2px solid var(--accent); padding-left: 16px; }
+.story strong { display: block; font-size: 14.5px; }
+.story p { color: var(--ink-2); }
+
+/* Certifications */
+.certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cert-group { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; }
+.cert-issuer { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.cert-issuer .skill-icon { margin: 0; width: 42px; height: 42px; }
+.cert-issuer h3 { font-size: 20px; font-weight: 600; }
+.cert-issuer span { font-size: 13.5px; color: var(--ink-2); }
+.cert-list { display: grid; gap: 8px; }
+.cert-list li { display: flex; gap: 10px; align-items: flex-start; padding: 11px 13px; border-radius: var(--radius); background: var(--surface-2); font-size: 15.5px; transition: background .2s; }
+.cert-list li:hover { background: var(--accent-soft); }
+.cert-list svg { width: 18px; height: 18px; color: var(--accent); flex: none; margin-top: 3px; }
+@media (max-width: 960px) { .certs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .certs { grid-template-columns: 1fr; } }
+
+/* Langues */
+.langs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-left: 300px; }
+.lang { border-top: 2px solid var(--ink); padding-top: 16px; }
+.lang h3 { font-size: 22px; font-weight: 600; }
+.lang p { color: var(--ink-2); font-size: 15px; margin-top: 2px; }
+.level { display: flex; gap: 5px; margin-top: 14px; }
+.level i { flex: 1; height: 6px; border-radius: 3px; background: var(--line); }
+.level i.on { background: var(--accent); }
+.level-scale { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+@media (max-width: 960px) { .langs { margin-left: 0; } }
+@media (max-width: 640px) { .langs { grid-template-columns: 1fr; gap: 26px; } }
+
+/* Ce que je recherche */
+.goal { background: var(--navy); color: #fff; padding: 96px 0; }
+.goal-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
+.goal h2 { font-size: clamp(32px, 4vw, 46px); font-weight: 700; }
+.goal p { margin-top: 18px; color: rgba(255,255,255,.8); font-size: 19px; max-width: 58ch; }
+.goal-target { border: 1px solid var(--navy-line); border-radius: var(--radius-lg); padding: 28px; background: var(--navy-2); }
+.goal-target span { font-size: 14px; color: rgba(255,255,255,.6); }
+.goal-target strong { display: block; font: 600 26px/1.2 var(--f-display); color: var(--signal); margin-top: 6px; }
+.path { display: flex; align-items: center; gap: 8px; margin-top: 22px; flex-wrap: wrap; font-size: 14px; color: rgba(255,255,255,.7); }
+.path b { font-weight: 500; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--navy-line); }
+.path b.to { border-color: var(--signal); color: var(--signal); }
+.path svg { width: 16px; height: 16px; color: rgba(255,255,255,.4); }
+@media (max-width: 820px) { .goal { padding: 72px 0; } .goal-grid { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; }
+.contact-list { display: grid; gap: 10px; margin-top: 26px; }
+.contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); text-decoration: none; transition: border-color .2s; }
+a.contact-item:hover { border-color: var(--accent); }
+.contact-item .skill-icon { margin: 0; width: 40px; height: 40px; }
+.contact-item .skill-icon svg { width: 19px; height: 19px; }
+.contact-item small { display: block; font-size: 13px; color: var(--ink-2); }
+.contact-item span { font-weight: 500; word-break: break-word; }
+.form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; display: grid; gap: 16px; }
+.field { display: grid; gap: 7px; }
+.field label { font-size: 14.5px; font-weight: 500; }
+.field input, .field textarea {
+  font: 16px var(--f-body); color: var(--ink); background: var(--bg); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 13px 14px; transition: border-color .2s;
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.field textarea { min-height: 150px; resize: vertical; }
+.form-note { font-size: 13.5px; color: var(--ink-2); }
+.form .btn { justify-self: start; }
+.field-error { font-size: 13.5px; color: #D64545; display: none; }
+.field.has-error input, .field.has-error textarea { border-color: #D64545; }
+.field.has-error .field-error { display: block; }
+@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } .form { padding: 22px; } }
+
+/* Pied de page */
+.footer { background: var(--navy); color: rgba(255,255,255,.65); padding: 28px 0; font-size: 14.5px; }
+.footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.footer a { text-decoration: none; }
+.footer a:hover { color: var(--signal); }
+
+/* Notification */
+.toast {
+  position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px);
+  background: var(--navy); color: #fff; border: 1px solid var(--navy-line); padding: 13px 18px; border-radius: 12px;
+  font-size: 15px; z-index: 90; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; max-width: calc(100% - 32px);
+}
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* Miniatures et agrandissement des certificats */
+.cert-list li { align-items: center; }
+.cert-thumb { flex: none; width: 78px; aspect-ratio: 3 / 2; padding: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; cursor: zoom-in; transition: border-color .2s, transform .2s; }
+.cert-thumb:hover { border-color: var(--accent); transform: scale(1.05); }
+.cert-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.cert-date { display: block; font-size: 13px; color: var(--ink-2); margin-top: 2px; }
+.lightbox { position: fixed; inset: 0; z-index: 95; display: none; place-items: center; padding: 20px; }
+.lightbox.is-open { display: grid; }
+.lightbox-backdrop { position: absolute; inset: 0; background: rgba(8,16,30,.8); }
+.lightbox-panel { position: relative; margin: 0; max-width: min(1000px, 100%); background: var(--surface); border-radius: 14px; padding: 14px; }
+.lightbox-panel img { width: 100%; max-height: 78vh; object-fit: contain; border-radius: 8px; }
+.lightbox-panel figcaption { margin-top: 10px; font-weight: 600; text-align: center; color: var(--ink); }
+.lightbox-panel .modal-close { position: absolute; top: -14px; right: -14px; float: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= NAVIGATION ======================= -->
+<header class="site-header" id="header">
+  <nav class="nav wrap" aria-label="Navigation principale">
+    <a href="#accueil" class="brand"><span class="brand-mark">NFD</span><span>Ndeye Fatou Dia</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="nav-links" id="navLinks"></div>
+  </nav>
+</header>
+
+<main>
+<!-- ======================= ACCUEIL ======================= -->
+<section class="hero" id="accueil">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="hero-status"><span class="dot"></span>Disponible pour un stage ou un premier emploi</p>
+      <h1><span>Ndeye Fatou</span><span>Dia</span></h1>
+      <p class="hero-role">Technicienne supérieure en Systèmes, Réseaux et Télécommunications</p>
+      <p class="hero-intro">Passionnée par les réseaux, les systèmes et les technologies cloud, je conçois et déploie des solutions techniques orientées vers des infrastructures fiables, sécurisées et évolutives.</p>
+      <div class="hero-actions">
+        <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      </div>
+      <div class="hero-social" id="heroSocial"></div>
+    </div>
+    <div class="hero-visual" id="heroVisual"></div>
+  </div>
+</section>
+
+<!-- ======================= OUTILS ======================= -->
+<div class="tool-band" aria-label="Environnements et outils utilisés">
+  <div class="wrap"><span>Cisco</span><span>Huawei</span><span>Linux</span><span>Asterisk</span><span>Docker</span><span>AWS</span><span>VMware</span></div>
+</div>
+
+<!-- ======================= À PROPOS ======================= -->
+<section class="section" id="apropos">
+  <div class="wrap about" id="aboutGrid">
+    <div class="about-media" id="aboutMedia">
+      <div class="about-ring" aria-hidden="true"></div>
+      <div class="about-photo" id="aboutPhoto"></div>
+    </div>
+    <div class="about-text">
+      <span class="step">Mon parcours</span>
+      <h2>À propos</h2>
+      <div class="about-body">
+        <p>Je suis diplômée d’une Licence 3 en Systèmes, Réseaux et Télécommunications à l’ESP Dakar, avec une Mention Très Bien.</p>
+        <p>Mon parcours m’a permis de développer des compétences en réseaux, administration Linux, télécommunications, VoIP, cybersécurité, virtualisation, Docker et développement web.</p>
+        <p>J’ai également eu des expériences pratiques en entreprise et en recherche, notamment chez Atech Cybersécurité et au département Recherche, Développement et Innovation de l’ISFAD – UCAD II.</p>
+        <p>Je souhaite continuer à développer mes compétences dans les domaines des réseaux, du cloud et des infrastructures informatiques, avec pour objectif professionnel d’évoluer vers l’ingénierie cloud.</p>
+      </div>
+      <div class="about-stats" id="aboutStats"></div>
+      <div class="about-actions" id="aboutActions"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FORMATION ======================= -->
+<section class="section" id="formation">
+  <div class="wrap">
+    <div class="section-head"><div><span class="step">Étape 1</span><h2>Formation</h2></div><p>Quatre années de formation scientifique puis technique, de la série S2 à la Licence en Systèmes, Réseaux & Télécommunications.</p></div>
+    <ol class="timeline" id="educationList"></ol>
+  </div>
+</section>
+
+<!-- ======================= COMPÉTENCES ======================= -->
+<section class="section" id="competences">
+  <div class="wrap">
+    <div class="section-head"><div><span class="step">Étape 2</span><h2>Compétences</h2></div><p>Les domaines sur lesquels j’ai travaillé en formation, en stage et en projet.</p></div>
+    <div class="skills" id="skillsList"></div>
+  </div>
+</section>
+
+<!-- ======================= EXPÉRIENCES ======================= -->
+<section class="section" id="experiences">
+  <div class="wrap">
+    <div class="section-head"><div><span class="step">Étape 3</span><h2>Expériences</h2></div><p>Du terrain chez un intégrateur réseau à la recherche appliquée à l’université.</p></div>
+    <ol class="timeline" id="experienceList"></ol>
+  </div>
+</section>
+
+<!-- ======================= PROJETS ======================= -->
+<section class="section" id="projets">
+  <div class="wrap">
+    <div class="section-head"><div><span class="step">Étape 4</span><h2>Projets</h2></div><p>Des projets concrets en réseaux, téléphonie IP, conteneurisation et développement, avec ce que j’y ai réalisé.</p></div>
+    <div class="projects" id="projectsList"></div>
+  </div>
+</section>
+
+<!-- ======================= CERTIFICATIONS + LANGUES ======================= -->
+<section class="section" id="certifications">
+  <div class="wrap">
+    <div class="section-head"><div><span class="step">Formations complémentaires</span><h2>Certifications</h2></div></div>
+    <div class="certs" id="certsList"></div>
+
+    <div class="section-head" style="margin-top:80px"><div><h2>Langues</h2></div></div>
+    <div class="langs" id="langsList"></div>
+  </div>
+</section>
+
+<!-- ======================= OBJECTIF ======================= -->
+<section class="goal" id="objectif">
+  <div class="wrap goal-grid">
+    <div>
+      <span class="step" style="color:var(--signal)">Étape 5</span>
+      <h2>Ce que je recherche</h2>
+      <p>Je recherche une opportunité dans les domaines des réseaux, des télécommunications, des systèmes ou du cloud, au sein d’une équipe où je pourrai mettre en pratique mes compétences, continuer à apprendre et participer à des projets techniques concrets.</p>
+    </div>
+    <div class="goal-target">
+      <span>Objectif à moyen terme</span>
+      <strong>Évoluer vers l’ingénierie Cloud & Infrastructure</strong>
+      <div class="path">
+        <b>Réseaux</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <b>Systèmes</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <b class="to">Cloud</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section class="section" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2 style="font-size:clamp(32px,4vw,46px)">Travaillons ensemble</h2>
+      <p style="color:var(--ink-2);margin-top:14px;max-width:48ch">Vous avez un projet, une opportunité ou souhaitez échanger sur les technologies réseaux, systèmes ou cloud ? N’hésitez pas à me contacter.</p>
+      <div class="contact-list" id="contactList"></div>
+    </div>
+    <form class="form" id="contactForm" novalidate>
+      <div class="field"><label for="f-name">Nom</label><input id="f-name" name="name" autocomplete="name" required><span class="field-error">Indiquez votre nom.</span></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="field-error">Indiquez une adresse email valide.</span></div>
+      <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea><span class="field-error">Écrivez votre message.</span></div>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+      <p class="form-note">Le bouton ouvre votre messagerie avec le message prérempli.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© <span id="year"></span> Ndeye Fatou Dia — Dakar, Sénégal</span>
+    <a href="#accueil">Retour en haut</a>
+  </div>
+</footer>
+
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" id="modalPanel"></div>
+</div>
+<div class="lightbox" id="certLightbox" role="dialog" aria-modal="true" aria-labelledby="certCaption">
+  <div class="lightbox-backdrop" data-close-cert></div>
+  <figure class="lightbox-panel">
+    <button class="modal-close" data-close-cert aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <img id="certImg" src="" alt="">
+    <figcaption id="certCaption"></figcaption>
+  </figure>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =========================================================
+   CONFIGURATION — à compléter
+   Renseignez vos liens ici. Tant qu'un lien est vide,
+   le bouton correspondant affiche un message au lieu d'un lien cassé.
+   ========================================================= */
+const CONFIG = {
+  email: "ndeyefatoudia2103@gmail.com",
+  phone: "+221 78 133 93 60",
+  location: "Dakar, Sénégal",
+  linkedin: "https://www.linkedin.com/in/ndeyefatoudia",
+  github: "",     // ex. "https://github.com/votre-pseudo"
+  cvUrl: "https://drive.google.com/file/d/1jiPh8GH16rzV8IwHKP4nkaQk4wbhk5ds/view?usp=sharing",
+  photoUrl: "maphoto.jpg",          // photo du haut de page
+  photoPosition: "center 15%",      // cadrage : augmentez le % pour descendre, diminuez pour monter
+  aboutPhotoUrl: "",                // photo de la section À propos (vide = même photo)
+  aboutPhotoPosition: "center 25%"
+};
+
+/* =========================================================
+   DONNÉES — ajoutez simplement un objet pour un nouvel élément
+   ========================================================= */
+const NAV = [
+  ["accueil", "Accueil"], ["apropos", "À propos"], ["formation", "Formation"],
+  ["competences", "Compétences"], ["experiences", "Expériences"], ["projets", "Projets"],
+  ["certifications", "Certifications"], ["contact", "Contact"]
+];
+
+const SKILLS = [
+  { icon: "network", title: "Réseaux", text: "Adressage, services et interconnexion", items: ["TCP/IP", "VLAN", "DNS", "DHCP", "Routage", "Fibre optique / FTTH"] },
+  { icon: "server", title: "Systèmes", text: "Environnements Linux", items: ["Linux", "Administration système et réseau"] },
+  { icon: "phone", title: "Télécommunications", text: "Voix et communications unifiées", items: ["VoIP", "Asterisk", "Téléphonie IP", "Visioconférence"] },
+  { icon: "shield", title: "Cybersécurité", text: "Bases de la sécurité réseau", items: ["Nmap", "Fondamentaux de la cybersécurité"] },
+  { icon: "cloud", title: "Cloud & Virtualisation", text: "Conteneurs et machines virtuelles", items: ["Docker", "Kubernetes (K3s)", "VMware", "VirtualBox", "Notions d’infrastructure cloud"] },
+  { icon: "code", title: "Développement", text: "Programmation et web", items: ["Java", "C", "HTML", "CSS", "JavaScript", "PHP", "XML"] }
+];
+
+const PROJECTS = [
+  {
+    id: "uav-d",
+    featured: true,
+    visual: "drone",
+    context: "Stage RDI — ISFAD, UCAD II",
+    title: "UAV-D+ — Analyse et optimisation de structures pour drones",
+    description: "Plateforme web d’aide à l’analyse géométrique et à la génération de variantes de châssis pour améliorer l’autonomie des drones UAV moyens.",
+    features: ["Importation et analyse de modèles 3D", "Calcul du volume", "Calcul de la surface", "Calcul du centre de masse", "Génération de variantes de structures", "Visualisation 3D", "Comparaison des variantes", "Export des modèles STL"],
+    done: ["Développement de la plateforme UAV-D+", "Analyse de modèles 3D : volume, surface et centre de masse", "Participation à la conception, au développement et aux tests"],
+    tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Three.js", "React Three Fiber", "FastAPI", "Python", "Trimesh", "Open3D", "Supabase", "Firebase"],
+    images: [
+      { src: "images/uav-accueil.jpg", caption: "Page d’accueil de UAV-D+" },
+      { src: "images/uav-application.jpg", caption: "Parcours d’optimisation : import STL, configuration, allègement, export" }
+    ],
+    link: "https://projetdroneuav-1.vercel.app", github: ""
+  },
+  {
+    id: "cdn-nfv",
+    visual: "containers",
+    context: "Projet SDN & NFV — Licence 3, ESP Dakar · équipe de cinq",
+    title: "Réseau de diffusion de contenu (CDN) virtualisé sous Kubernetes",
+    description: "Déploiement et orchestration d’une chaîne de fonctions réseau conteneurisées (CNF) avec Service Function Chaining : pare-feu applicatif, cache, répartiteur de charge et serveur web.",
+    brief: {
+      "Contexte": "Les opérateurs télécom doivent servir des millions de requêtes web de façon sécurisée, rapide et disponible. Le projet montre le principe du NFV : remplacer des équipements physiques dédiés par des fonctions réseau logicielles orchestrées par Kubernetes.",
+      "Chaîne de services": "Client → ModSecurity (pare-feu applicatif) → Varnish (cache) → HAProxy (répartiteur de charge) → Nginx (serveur web). Tout le trafic doit traverser chaque service, dans cet ordre, sans raccourci possible."
+    },
+    done: [
+      "Déploiement de 5 pods sur un cluster Kubernetes K3s",
+      "Plan de données séparé avec Multus CNI : 8 NetworkAttachmentDefinitions, 4 bridges Linux, adresses IP fixes",
+      "Routage statique dans chaque conteneur (nsenter) pour imposer l’ordre de la chaîne",
+      "Règles iptables pour autoriser le transit entre les bridges",
+      "Pare-feu ModSecurity avec les règles OWASP CRS : attaque LFI bloquée (HTTP 403)",
+      "Validation : réponse HTTP 200 à travers toute la chaîne, accès direct au serveur web impossible"
+    ],
+    tech: ["Kubernetes (K3s)", "Multus CNI", "ModSecurity (OWASP CRS)", "Varnish", "HAProxy", "Nginx", "iptables", "Linux"],
+    images: [
+      { src: "images/cdn-architecture.jpg", caption: "Architecture : plan de contrôle Kubernetes et plan de données Multus" },
+      { src: "images/cdn-http-200.jpg", caption: "Requête traversant toute la chaîne : HTTP 200 et passage par Varnish" },
+      { src: "images/cdn-acces-direct-bloque.jpg", caption: "Accès direct au serveur Nginx impossible : la chaîne ne peut pas être contournée" },
+      { src: "images/cdn-routes-sfc.jpg", caption: "Routes statiques du client et de ModSecurity" },
+      { src: "images/cdn-pods.jpg", caption: "Les 5 pods en état Running (kubectl get pods)" },
+      { src: "images/cdn-logs-nginx.jpg", caption: "Journaux Nginx : toutes les requêtes arrivent par la chaîne" }
+    ],
+    reportUrl: "",
+    link: "", github: ""
+  },
+  {
+    id: "voip",
+    visual: "voip",
+    context: "Stage de fin de cycle — Atech Cybersécurité · ",
+    title: "Déploiement d’une infrastructure VoIP avec Asterisk",
+    description: "Mise en œuvre d’un système de téléphonie IP basé sur Asterisk dans un environnement cloud.",
+    brief: {
+      "Contexte": "Au Sénégal, de nombreuses entreprises passent à la VoIP pour sa flexibilité, son faible coût et sa compatibilité avec le télétravail, alors que beaucoup utilisent encore le RTC, coûteux et peu flexible.",
+      "Problématique": "Comment mettre en place une téléphonie d’entreprise moderne, fiable et économique, adaptée aux réalités locales, avec des outils open source comme Asterisk et le cloud ?",
+      "Objectif": "Déployer Asterisk sur AWS, connecter des clients SIP au serveur et valider la solution par des tests d’appels."
+    },
+    done: [
+      "Création d’une instance AWS EC2 sous Ubuntu Server 24.04",
+      "Installation et configuration d’Asterisk",
+      "Création des comptes SIP et du plan de numérotation",
+      "Messagerie vocale",
+      "Appels vidéo, appel simultané et appel en cascade",
+      "Transfert d’appel, mise en attente et conférence",
+      "Tests d’appels audio et vidéo avec Zoiper et Linphone"
+    ],
+    tech: ["Asterisk", "SIP", "RTP", "AWS EC2", "Ubuntu Server", "Zoiper / Linphone", "Linux"],
+    images: [
+      { src: "images/voip-test-appel.jpg", caption: "Test d’appel entre les postes 5001 et 5002" },
+      { src: "images/voip-appel-video.jpg", caption: "Appel vidéo entre deux postes via le serveur Asterisk sur AWS" },
+      { src: "images/voip-aws-ec2.jpg", caption: "Création de l’instance AWS EC2 (Ubuntu Server 24.04)" },
+      { src: "images/voip-config-asterisk.jpg", caption: "Configuration des utilisateurs (users.conf) et du plan de numérotation (extensions.conf)" },
+      { src: "images/voip-dialplan.jpg", caption: "Plan de numérotation : appel simultané et appel en cascade" }
+    ],
+    reportUrl: "",   // lien Google Drive public vers le rapport (PDF), facultatif
+    link: "", github: ""
+  },
+  {
+    id: "auth",
+    visual: "key",
+    context: "",
+    title: "Infrastructure d’authentification multi-services",
+    description: "Mise en œuvre d’une infrastructure centralisée permettant de gérer l’authentification de plusieurs services réseau.",
+    brief: {
+      "Objectif": "Permettre aux utilisateurs de s’authentifier avec un seul identifiant pour accéder à plusieurs services réseau, y compris la téléphonie IP.",
+      "Architecture": "Un annuaire OpenLDAP central, un serveur Kerberos pour l’authentification par tickets, un serveur FreeRADIUS, des services Linux (SSH, Samba), un serveur web et un serveur SIP Asterisk reliés à l’annuaire."
+    },
+    done: [
+      "Mise en place de l’annuaire OpenLDAP : structure, utilisateurs et vérification avec ldapsearch",
+      "Création du royaume Kerberos, des principaux et test d’obtention de tickets (kinit, klist)",
+      "Configuration de FreeRADIUS avec les modules LDAP et Kerberos, EAP et génération des certificats",
+      "Authentification SSH centralisée via LDAP/Kerberos (PAM, nslcd)",
+      "Configuration des partages Samba intégrés à Kerberos",
+      "Serveur Asterisk relié à l’annuaire LDAP (res_ldap, Realtime) et module PAM RADIUS",
+      "Serveur web Apache en HTTPS avec authentification LDAP/Kerberos",
+      "Tests d’appels entre comptes SIP de l’annuaire avec Zoiper et Linphone"
+    ],
+    tech: ["OpenLDAP", "Kerberos", "FreeRADIUS", "Samba", "SSH / PAM", "Asterisk SIP", "Apache (HTTPS)", "Zoiper / Linphone", "Linux"],
+    images: [
+      { src: "images/auth-appel-sip.jpg", caption: "Appel entre deux comptes SIP stockés dans l’annuaire LDAP" },
+      { src: "images/auth-ldap-annuaire.jpg", caption: "Vérification d’un utilisateur de l’annuaire avec ldapsearch" },
+      { src: "images/auth-kerberos-ticket.jpg", caption: "Obtention d’un ticket Kerberos (kinit, klist)" },
+      { src: "images/auth-freeradius.jpg", caption: "Démarrage du serveur FreeRADIUS" },
+      { src: "images/auth-ldap-comptes-sip.jpg", caption: "Comptes utilisateurs LDAP avec attributs Asterisk (fichier LDIF)" },
+      { src: "images/auth-samba.jpg", caption: "Configuration de Samba intégrée à Kerberos (smb.conf)" }
+    ],
+    reportUrl: "",   // lien Google Drive public vers le rapport, facultatif
+    link: "", github: ""
+  },
+  {
+    id: "reseau4g",
+    visual: "voip",
+    context: "TP XML & PHP — Licence 3, ESP Dakar ",
+    title: "Application web de gestion d’un réseau mobile 4G LTE",
+    description: "Application PHP qui gère les équipements d’un réseau 4G (eNodeB, MME, SGW, HSS, terminaux) stockés dans un fichier XML, avec un espace visiteur et un espace administrateur.",
+    brief: {
+      "Contexte": "Modéliser en XML un réseau 4G LTE déployé dans la zone de la Médina, puis le gérer depuis une application web écrite uniquement en PHP avec l’extension SimpleXML."
+    },
+    done: [
+      "Modélisation du réseau 4G en XML, avec une DTD de validation",
+      "Page visiteur avec un schéma d’architecture généré à partir du XML",
+      "Espace administrateur protégé par session PHP",
+      "Ajout, modification et suppression des eNodeB, MME, SGW, HSS, liens et terminaux",
+      "Recherches XPath et sauvegarde du XML avec DOMDocument"
+    ],
+    tech: ["PHP", "XML", "DTD", "SimpleXML", "XPath", "HTML", "CSS", "Apache (XAMPP)"],
+    images: [
+      { src: "images/4g-dashboard.jpg", caption: "Tableau de bord administrateur" },
+      { src: "images/4g-architecture.jpg", caption: "Schéma d’architecture mis à jour automatiquement après l’ajout d’un eNodeB" },
+      { src: "images/4g-gestion-enodeb.jpg", caption: "Gestion des stations de base eNodeB" },
+      { src: "images/4g-ajout-enodeb.jpg", caption: "Formulaire d’ajout d’un eNodeB" },
+      { src: "images/4g-connexion-admin.jpg", caption: "Connexion à l’espace administrateur" },
+      { src: "images/4g-fichier-xml.jpg", caption: "Extrait du fichier reseau.xml" }
+    ],
+    reportUrl: "",
+    link: "", github: ""
+  },
+  {
+    id: "docker",
+    visual: "containers",
+    context: "Conteneurisation",
+    title: "Déploiement d’une application Full Stack avec Docker",
+    description: "Conteneurisation et déploiement d’une application web full stack, avec un environnement géré par Docker.",
+    done: ["Conteneurisation de l’application", "Configuration des services", "Déploiement", "Gestion de l’environnement avec Docker"],
+    tech: ["Docker", "HTML", "CSS", "JavaScript", "Backend / API"],
+    link: "", github: ""
+  },
+  {
+    id: "pra",
+    visual: "restore",
+    context: "Continuité d’activité",
+    title: "Simulation de reprise après sinistre dans un réseau d’entreprise",
+    description: "Simulation d’un sinistre sur le réseau d’une entreprise pour préparer et tester la reprise des services.",
+    /* À PRÉCISER : remplacez ces textes par les détails réels de votre projet */
+    story: {
+      "Contexte": "Simulation d’un incident majeur affectant le réseau d’une entreprise, afin d’évaluer sa capacité à assurer la continuité de ses services.",
+      "Problèmes rencontrés": "Interruption des services réseau lors de l’incident simulé et nécessité de les rétablir de manière ordonnée.",
+      "Solution mise en place": "Préparation et exécution d’une procédure de reprise pour restaurer les services concernés.",
+      "Résultats": "Rétablissement des services dans l’environnement de simulation et validation de la procédure de reprise."
+    },
+    tech: [],
+    link: "", github: ""
+  }
+];
+
+const EXPERIENCES = [
+  { title: "Stagiaire RDI", org: "ISFAD – UCAD II · Recherche, Développement et Innovation", date: "Juin 2026 – Juillet 2026",
+    items: ["Développement de la plateforme UAV-D+", "Analyse de modèles 3D", "Calcul du volume, de la surface et du centre de masse", "Participation à la conception, au développement et aux tests"] },
+  { title: "Stagiaire Télécommunications et Réseaux", org: "Atech Cybersécurité", date: "Mai 2025 – Juillet 2025",
+    items: ["Maintenance et dépannage de routeurs, switches et serveurs", "Installation et maintenance de systèmes de vidéosurveillance", "Câblage et configuration d’équipements réseau", "Téléphonie et visioconférence", "Assistance technique auprès des clients"] },
+  { title: "Responsable ventes et relation client", org: "Ker Dress", date: "Octobre 2024 – Présent", current: true, complementary: true,
+    note: "Une expérience complémentaire qui développe des compétences utiles dans tout poste technique :",
+    chips: ["Organisation", "Gestion des commandes", "Relation client", "Communication", "Gestion des réseaux sociaux", "Logistique"] }
+];
+
+const EDUCATION = [
+  { title: "Licence 3 — Systèmes, Réseaux & Télécommunications", org: "École Supérieure Polytechnique de Dakar", date: "2025–2026", honor: "Mention Très Bien" },
+  { title: "DST2 — Télécommunications et Réseaux", org: "École Supérieure Polytechnique de Dakar", date: "2024–2025", honor: "Mention Très Bien" },
+  { title: "DST1 — Télécommunications et Réseaux", org: "École Supérieure Polytechnique de Dakar", date: "2023–2024" },
+  { title: "Baccalauréat scientifique — Série S2", org: "Groupe Scolaire Educazur", date: "2022–2023" }
+];
+
+const CERTIFICATIONS = [
+  { issuer: "Cisco Networking Academy", icon: "network", items: [
+    { name: "Networking Devices and Basic Configuration", date: "Janvier 2025", image: "images/cert-cisco-equipements-reseau.jpg" },
+    { name: "Introduction to Cybersecurity", date: "Mai 2025", image: "images/cert-cisco-cybersecurite.jpg" },
+    { name: "English for IT 1", date: "Juin 2025", image: "images/cert-cisco-english-it.jpg" }
+  ]},
+  { issuer: "Huawei", icon: "server", items: [
+    { name: "Data Communication and Network Technology", image: "images/cert-huawei-datacom.jpg" }
+  ]},
+  { issuer: "Programme FORCE-N", icon: "code", items: [
+    { name: "Marketing digital", date: "Juin 2025", image: "images/cert-marketing-digital.jpg" },
+    { name: "Informatique et Internet", date: "Mars 2025", image: "images/cert-informatique-internet.jpg" }
+  ]}
+];
+
+/* level : 1 = Intermédiaire, 2 = Courant, 3 = Langue maternelle */
+const LANGUAGES = [
+  { name: "Français", label: "Courant", level: 2 },
+  { name: "Wolof", label: "Langue maternelle", level: 3 },
+  { name: "Anglais", label: "Intermédiaire (B1)", level: 1 }
+];
+
+/* =========================================================
+   ICÔNES
+   ========================================================= */
+const I = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICONS = {
+  network: I('<rect x="9" y="2.5" width="6" height="5" rx="1"/><rect x="2.5" y="16.5" width="6" height="5" rx="1"/><rect x="15.5" y="16.5" width="6" height="5" rx="1"/><path d="M12 7.5v4.5M5.5 16.5V12h13v4.5"/>'),
+  server: I('<rect x="3" y="3.5" width="18" height="7" rx="1.5"/><rect x="3" y="13.5" width="18" height="7" rx="1.5"/><path d="M7 7h.01M7 17h.01M11 7h6M11 17h6"/>'),
+  phone: I('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'),
+  shield: I('<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>'),
+  cloud: I('<path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4.75 4.75 0 0 1-.5 9.5z"/>'),
+  code: I('<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/>'),
+  mail: I('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/>'),
+  tel: I('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'),
+  pin: I('<path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'),
+  linkedin: I('<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.5v.01M12 17v-6.5M12 13.5c0-1.7 1-3 2.5-3S17 11.5 17 13v4"/>'),
+  github: I('<path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.8-2.3c2.8-.3 5.8-1.4 5.8-6.2a4.8 4.8 0 0 0-1.3-3.3 4.5 4.5 0 0 0-.1-3.3s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6.2 0C6.6 2.1 5.6 2.4 5.6 2.4a4.5 4.5 0 0 0-.1 3.3A4.8 4.8 0 0 0 4.2 9c0 4.8 3 5.9 5.8 6.2a3 3 0 0 0-.8 2.3V21"/>'),
+  download: I('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>'),
+  eye: I('<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'),
+  check: I('<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.3 2.3 4.7-5"/>'),
+  close: I('<path d="M6 6l12 12M18 6L6 18"/>'),
+  medal: I('<circle cx="12" cy="14" r="6"/><path d="M8.5 3h7l-2 6.2M10.5 9.2L8.5 3"/>')
+};
+
+/* Visuels des cartes projets */
+const VISUALS = {
+  drone: `<svg viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="40" cy="35" r="24" stroke-dasharray="4 4" opacity=".6"/><circle cx="160" cy="35" r="24" stroke-dasharray="4 4" opacity=".6"/>
+      <circle cx="40" cy="115" r="24" stroke-dasharray="4 4" opacity=".6"/><circle cx="160" cy="115" r="24" stroke-dasharray="4 4" opacity=".6"/>
+      <path d="M40 35L85 62M160 35L115 62M40 115L85 88M160 115L115 88"/>
+      <path d="M85 60h30l8 15-8 15H85l-8-15z" fill="rgba(46,196,182,.12)"/>
+      <circle cx="100" cy="75" r="4" fill="currentColor"/><path d="M100 60v-8M100 90v8" opacity=".6"/>
+      <circle cx="40" cy="35" r="4"/><circle cx="160" cy="35" r="4"/><circle cx="40" cy="115" r="4"/><circle cx="160" cy="115" r="4"/></svg>`,
+  voip: `<svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <rect x="8" y="22" width="26" height="44" rx="5"/><rect x="86" y="22" width="26" height="44" rx="5"/>
+      <path d="M40 44h4M48 36v16M54 30v28M60 38v12M66 32v24M72 40v8M76 44h4"/></svg>`,
+  containers: `<svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="18" y="16" width="38" height="24" rx="3"/><rect x="64" y="16" width="38" height="24" rx="3"/><rect x="41" y="48" width="38" height="24" rx="3" fill="rgba(46,196,182,.12)"/>
+      <path d="M28 22v12M37 22v12M46 22v12M74 22v12M83 22v12M92 22v12M51 54v12M60 54v12M69 54v12" opacity=".6"/><path d="M10 80h100"/></svg>`,
+  key: `<svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="60" cy="45" r="12" fill="rgba(46,196,182,.12)"/><path d="M60 39v6l4 3"/>
+      <circle cx="18" cy="18" r="6"/><circle cx="102" cy="18" r="6"/><circle cx="18" cy="72" r="6"/><circle cx="102" cy="72" r="6"/>
+      <path d="M23 22l27 16M97 22L70 38M23 68l27-16M97 68L70 52" stroke-dasharray="3 4"/></svg>`,
+  restore: `<svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <rect x="14" y="30" width="30" height="30" rx="4" stroke-dasharray="4 4" opacity=".6"/><rect x="76" y="30" width="30" height="30" rx="4" fill="rgba(46,196,182,.12)"/>
+      <path d="M48 38c8-8 20-8 24 0M72 38l1-6M72 38l-6-1M72 52c-8 8-20 8-24 0M48 52l-1 6M48 52l6 1"/></svg>`
+};
+
+/* =========================================================
+   RENDU
+   ========================================================= */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const chips = (arr) => `<div class="chips">${arr.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>`;
+const list = (arr) => `<ul class="t-list">${arr.map(t => `<li>${esc(t)}</li>`).join("")}</ul>`;
+const linkAttr = (url, label) => url
+  ? `href="${esc(url)}" target="_blank" rel="noopener"`
+  : `href="#" data-missing="${esc(label)}"`;
+
+/* Navigation */
+$("#navLinks").innerHTML = NAV.map(([id, label]) => `<a href="#${id}" data-nav="${id}">${label}</a>`).join("")
+  + `<a class="btn btn-primary btn-sm nav-cta" ${linkAttr(CONFIG.cvUrl, "Le lien vers le CV")}>${ICONS.download}Télécharger mon CV</a>`;
+
+/* Liens sociaux */
+$("#heroSocial").innerHTML = `
+  <a class="icon-link" ${linkAttr(CONFIG.linkedin, "Le lien LinkedIn")} aria-label="LinkedIn">${ICONS.linkedin}</a>
+  <a class="icon-link" ${linkAttr(CONFIG.github, "Le lien GitHub")} aria-label="GitHub">${ICONS.github}</a>
+  <a class="icon-link" href="mailto:${CONFIG.email}" aria-label="Email">${ICONS.mail}</a>`;
+
+/* Photo du haut de page */
+(function buildHeroVisual() {
+  const photo = CONFIG.photoUrl
+    ? `<img src="${esc(CONFIG.photoUrl)}" alt="Ndeye Fatou Dia" style="object-position:${esc(CONFIG.photoPosition || "center top")}">`
+    : `<span class="hero-monogram">NFD</span>`;
+  const chip = (cls, icon, title, sub) => `<div class="hero-chip ${cls}"><i>${ICONS[icon]}</i><div><b>${title}</b><small>${sub}</small></div></div>`;
+  $("#heroVisual").innerHTML = `
+    <div class="hero-lines" aria-hidden="true"></div>
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="hero-photo">${photo}</div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    ${chip("chip-a", "network", "Réseaux", "TCP/IP · VLAN · DNS")}
+    ${chip("chip-b", "phone", "Télécom", "VoIP · Asterisk")}
+    ${chip("chip-c", "cloud", "Cloud", "Docker · AWS")}`;
+})();
+
+/* À propos : photo, chiffres clés (calculés à partir des données) et boutons */
+(function buildAbout() {
+  const url = CONFIG.aboutPhotoUrl || CONFIG.photoUrl;
+  if (url) {
+    $("#aboutPhoto").innerHTML = `<img src="${esc(url)}" alt="Portrait de Ndeye Fatou Dia" loading="lazy" style="object-position:${esc(CONFIG.aboutPhotoPosition || "center top")}">`;
+  } else {
+    $("#aboutMedia").remove(); $("#aboutGrid").classList.add("no-photo");
+  }
+  const stages = EXPERIENCES.filter(e => /stagiaire/i.test(e.title)).length;
+  const certs = CERTIFICATIONS.reduce((n, c) => n + c.items.length, 0);
+  const stats = [
+    ["Très Bien", "Mention en Licence 3"],
+    [stages, "Stages en entreprise et en recherche"],
+    [PROJECTS.length, "Projets techniques"],
+    [certs, "Certifications"]
+  ];
+  $("#aboutStats").innerHTML = stats.map(([v, l]) => `<div><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join("");
+  $("#aboutActions").innerHTML = `
+    <a class="btn btn-primary" ${linkAttr(CONFIG.cvUrl, "Le lien vers le CV")}>${ICONS.download}Télécharger mon CV</a>
+    <a class="btn btn-line" href="#contact">Me contacter</a>`;
+})();
+
+/* Formation */
+$("#educationList").innerHTML = EDUCATION.map((e, i) => `
+  <li class="t-item${i === 0 ? " is-current" : ""}">
+    <div class="t-top"><h3>${esc(e.title)}</h3><span class="t-date">${esc(e.date)}</span></div>
+    ${e.org ? `<p class="t-org">${esc(e.org)}</p>` : ""}
+    ${e.honor ? `<span class="badge">${ICONS.medal.replace("<svg", '<svg width="15" height="15"')}${esc(e.honor)}</span>` : ""}
+  </li>`).join("");
+
+/* Compétences */
+$("#skillsList").innerHTML = SKILLS.map(s => `
+  <article class="skill">
+    <div class="skill-icon">${ICONS[s.icon]}</div>
+    <h3>${esc(s.title)}</h3><p>${esc(s.text)}</p>${chips(s.items)}
+  </article>`).join("");
+
+/* Expériences */
+$("#experienceList").innerHTML = EXPERIENCES.map(e => `
+  <li class="t-item${e.current ? " is-current" : ""}">
+    <div class="t-top"><h3>${esc(e.title)}</h3><span class="t-date">${esc(e.date)}</span></div>
+    <p class="t-org">${esc(e.org)}</p>
+    ${e.complementary ? `<span class="badge badge-muted">Expérience complémentaire</span>` : ""}
+    ${e.items ? list(e.items) : ""}
+    ${e.note ? `<p class="t-note">${esc(e.note)}</p>` : ""}
+    ${e.chips ? chips(e.chips) : ""}
+  </li>`).join("");
+
+/* Projets */
+function projectCard(p) {
+  const highlights = p.featured ? p.features : (p.done || []).slice(0, 3);
+  const summaryBlock = p.story
+    ? `<div><h4>Démarche</h4>${list(Object.keys(p.story))}</div>`
+    : `<div><h4>${p.featured ? "Fonctionnalités" : "Ce que j’ai réalisé"}</h4>${p.featured ? `<ul class="t-list feature-grid">${highlights.map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : list(highlights)}</div>`;
+  return `
+  <article class="project${p.featured ? " is-featured" : ""}">
+    <div class="project-visual${p.images ? " has-shot" : ""}">${p.images ? `<img src="${esc(p.images[0].src)}" alt="${esc(p.images[0].caption)}" loading="lazy">` : (VISUALS[p.visual] || "")}${p.featured ? `<span class="featured-flag">Projet principal</span>` : ""}</div>
+    <div class="project-body">
+      <span class="project-tag">${esc(p.context)}</span>
+      <h3>${esc(p.title)}</h3>
+      <p class="project-desc">${esc(p.description)}</p>
+      ${summaryBlock}
+      ${p.tech.length ? chips(p.featured ? p.tech : p.tech) : ""}
+      <div class="project-actions">
+        <button class="btn btn-line btn-sm" data-project="${p.id}">${ICONS.eye}Voir le projet</button>
+        ${p.link ? `<a class="btn btn-primary btn-sm" href="${esc(p.link)}" target="_blank" rel="noopener">Voir le site en ligne</a>` : ""}
+        ${p.github ? `<a class="btn btn-line btn-sm" href="${esc(p.github)}" target="_blank" rel="noopener">${ICONS.github}GitHub</a>` : ""}
+      </div>
+    </div>
+  </article>`;
+}
+$("#projectsList").innerHTML = PROJECTS.map(projectCard).join("");
+
+/* Modale projet */
+const modal = $("#projectModal");
+let lastFocus = null;
+function openProject(id) {
+  const p = PROJECTS.find(x => x.id === id); if (!p) return;
+  lastFocus = document.activeElement;
+  $("#modalPanel").innerHTML = `
+    <button class="modal-close" data-close aria-label="Fermer">${ICONS.close}</button>
+    <span class="project-tag">${esc(p.context)}</span>
+    <h3 id="modalTitle">${esc(p.title)}</h3>
+    <p class="lead">${esc(p.description)}</p>
+    ${p.brief ? `<div class="story" style="margin-top:22px">${Object.entries(p.brief).map(([k, v]) => `<div><strong>${esc(k)}</strong><p>${esc(v)}</p></div>`).join("")}</div>` : ""}
+    ${p.images ? `<div class="shots">${p.images.map(im => `<button class="shot" data-cert="${esc(im.src)}" data-title="${esc(im.caption)}" aria-label="Agrandir : ${esc(im.caption)}"><img src="${esc(im.src)}" alt="${esc(im.caption)}" loading="lazy"><span>${esc(im.caption)}</span></button>`).join("")}</div>` : ""}
+    ${p.features ? `<h4>Fonctionnalités</h4>${list(p.features)}` : ""}
+    ${p.done ? `<h4>Ce que j’ai réalisé</h4>${list(p.done)}` : ""}
+    ${p.story ? `<div class="story">${Object.entries(p.story).map(([k, v]) => `<div><strong>${esc(k)}</strong><p>${esc(v)}</p></div>`).join("")}</div>` : ""}
+    ${p.tech.length ? `<h4>Technologies</h4>${chips(p.tech)}` : ""}
+    ${(p.link || p.github || p.reportUrl) ? `<div class="project-actions" style="margin-top:28px">
+      ${p.reportUrl ? `<a class="btn btn-line btn-sm" href="${esc(p.reportUrl)}" target="_blank" rel="noopener">Lire le rapport</a>` : ""}
+      ${p.link ? `<a class="btn btn-primary btn-sm" href="${esc(p.link)}" target="_blank" rel="noopener">Voir le site en ligne</a>` : ""}
+      ${p.github ? `<a class="btn btn-line btn-sm" href="${esc(p.github)}" target="_blank" rel="noopener">${ICONS.github}GitHub</a>` : ""}</div>` : ""}`;
+  modal.classList.add("is-open");
+  document.body.style.overflow = "hidden";
+  $(".modal-close", modal).focus();
+}
+function closeProject() {
+  modal.classList.remove("is-open");
+  document.body.style.overflow = "";
+  if (lastFocus) lastFocus.focus();
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-project]"); if (b) openProject(b.dataset.project);
+  if (e.target.closest("[data-close]")) closeProject();
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("is-open") && !document.getElementById("certLightbox").classList.contains("is-open")) closeProject(); });
+
+/* Certifications */
+$("#certsList").innerHTML = CERTIFICATIONS.map(c => `
+  <article class="cert-group">
+    <div class="cert-issuer"><div class="skill-icon">${ICONS[c.icon]}</div><div><h3>${esc(c.issuer)}</h3><span>${c.items.length} certification${c.items.length > 1 ? "s" : ""}</span></div></div>
+    <ul class="cert-list">${c.items.map(it => `
+      <li>
+        ${it.image
+          ? `<button class="cert-thumb" data-cert="${esc(it.image)}" data-title="${esc(it.name)}" aria-label="Voir le certificat ${esc(it.name)}"><img src="${esc(it.image)}" alt="" loading="lazy"></button>`
+          : ICONS.check}
+        <div><span>${esc(it.name)}</span>${it.date ? `<small class="cert-date">${esc(it.date)}</small>` : ""}</div>
+      </li>`).join("")}</ul>
+  </article>`).join("");
+
+/* Agrandissement d'un certificat */
+const lightbox = $("#certLightbox");
+function closeCert() { lightbox.classList.remove("is-open"); document.body.style.overflow = ""; }
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-cert]");
+  if (t) {
+    $("#certImg").src = t.dataset.cert;
+    $("#certImg").alt = "Certificat " + t.dataset.title;
+    $("#certCaption").textContent = t.dataset.title;
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+  if (e.target.closest("[data-close-cert]")) { closeCert(); if (modal.classList.contains("is-open")) document.body.style.overflow = "hidden"; }
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && lightbox.classList.contains("is-open")) { closeCert(); if (modal.classList.contains("is-open")) document.body.style.overflow = "hidden"; } });
+
+/* Langues */
+$("#langsList").innerHTML = LANGUAGES.map(l => `
+  <div class="lang">
+    <h3>${esc(l.name)}</h3><p>${esc(l.label)}</p>
+    <div class="level" role="img" aria-label="Niveau : ${esc(l.label)}">${[1, 2, 3].map(n => `<i class="${n <= l.level ? "on" : ""}"></i>`).join("")}</div>
+    <div class="level-scale"><span>Intermédiaire</span><span>Courant</span><span>Maternelle</span></div>
+  </div>`).join("");
+
+/* Contact */
+$("#contactList").innerHTML = `
+  <a class="contact-item" href="mailto:${CONFIG.email}"><div class="skill-icon">${ICONS.mail}</div><div><small>Email</small><span>${CONFIG.email}</span></div></a>
+  <a class="contact-item" href="tel:${CONFIG.phone.replace(/\s/g, "")}"><div class="skill-icon">${ICONS.tel}</div><div><small>Téléphone</small><span>${CONFIG.phone}</span></div></a>
+  <div class="contact-item"><div class="skill-icon">${ICONS.pin}</div><div><small>Localisation</small><span>${CONFIG.location}</span></div></div>
+  <a class="contact-item" ${linkAttr(CONFIG.linkedin, "Le lien LinkedIn")}><div class="skill-icon">${ICONS.linkedin}</div><div><small>LinkedIn</small><span>Voir mon profil</span></div></a>
+  <a class="contact-item" ${linkAttr(CONFIG.github, "Le lien GitHub")}><div class="skill-icon">${ICONS.github}</div><div><small>GitHub</small><span>Voir mes dépôts</span></div></a>`;
+
+/* Formulaire → messagerie */
+$("#contactForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const f = e.target; let ok = true;
+  [["name", v => v.trim().length > 1], ["email", v => /^\S+@\S+\.\S+$/.test(v)], ["message", v => v.trim().length > 4]].forEach(([n, test]) => {
+    const input = f.elements[n]; const valid = test(input.value);
+    input.closest(".field").classList.toggle("has-error", !valid); if (!valid) ok = false;
+  });
+  if (!ok) return;
+  const subject = `Contact portfolio — ${f.elements.name.value.trim()}`;
+  const body = `${f.elements.message.value.trim()}\n\n${f.elements.name.value.trim()}\n${f.elements.email.value.trim()}`;
+  const url = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const a = document.createElement("a"); a.href = url; a.target = "_blank"; a.rel = "noopener"; a.click();
+  toast("Votre messagerie s’ouvre avec le message prérempli.");
+  f.reset();
+});
+
+/* Liens non renseignés */
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("[data-missing]"); if (!a) return;
+  e.preventDefault(); toast(`${a.dataset.missing} sera bientôt disponible.`);
+});
+
+/* Notification */
+let toastTimer;
+function toast(msg) {
+  const t = $("#toast"); t.textContent = msg; t.classList.add("is-visible");
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("is-visible"), 3200);
+}
+
+/* En-tête : fond au défilement + lien actif + menu mobile */
+const header = $("#header");
+const onScroll = () => header.classList.toggle("is-solid", window.scrollY > 40);
+window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+const navLinks = $("#navLinks"), toggle = $("#navToggle");
+toggle.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("is-open");
+  toggle.setAttribute("aria-expanded", open);
+  header.classList.toggle("is-solid", open || window.scrollY > 40);
+});
+navLinks.addEventListener("click", (e) => { if (e.target.closest("a[data-nav]")) { navLinks.classList.remove("is-open"); toggle.setAttribute("aria-expanded", false); } });
+
+const sectionIds = NAV.map(n => n[0]);
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    let id = en.target.id; if (id === "objectif") id = "projets";
+    document.querySelectorAll("[data-nav]").forEach(a => a.classList.toggle("is-active", a.dataset.nav === id));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+[...sectionIds, "objectif"].forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
+
+$("#year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
